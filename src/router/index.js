@@ -1,5 +1,9 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   Splash,
@@ -21,10 +25,10 @@ const Tab = createBottomTabNavigator();
 const config = {
   animation: 'spring',
   config: {
-    stiffness: 1000,
-    damping: 500,
-    mass: 3,
-    overshootClamping: true,
+    stiffness: 1800,
+    damping: 300,
+    mass: 1,
+    overshootClamping: false,
     restDisplacementThreshold: 0.01,
     restSpeedThreshold: 0.01,
   },
@@ -42,17 +46,17 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        ...TransitionPresets.SlideFromRightIOS,
+      }}>
       <Stack.Screen
         name="Splash"
         component={Splash}
         options={{
           headerShown: false,
-          gestureDirection: 'horizontal',
-          transitionSpec: {
-            open: config,
-            close: config,
-          },
         }}
       />
       <Stack.Screen
@@ -60,11 +64,6 @@ const Router = () => {
         component={GetStarted}
         options={{
           headerShown: false,
-          gestureDirection: 'horizontal',
-          transitionSpec: {
-            open: config,
-            close: config,
-          },
         }}
       />
       <Stack.Screen
@@ -72,11 +71,6 @@ const Router = () => {
         component={SignUp}
         options={{
           headerShown: false,
-          gestureDirection: 'horizontal',
-          transitionSpec: {
-            open: config,
-            close: config,
-          },
         }}
       />
       <Stack.Screen
@@ -84,11 +78,6 @@ const Router = () => {
         component={Login}
         options={{
           headerShown: false,
-          gestureDirection: 'horizontal',
-          transitionSpec: {
-            open: config,
-            close: config,
-          },
         }}
       />
       <Stack.Screen
@@ -96,11 +85,6 @@ const Router = () => {
         component={UploadPhoto}
         options={{
           headerShown: false,
-          gestureDirection: 'horizontal',
-          transitionSpec: {
-            open: config,
-            close: config,
-          },
         }}
       />
       <Stack.Screen
@@ -108,11 +92,6 @@ const Router = () => {
         component={MainApp}
         options={{
           headerShown: false,
-          gestureDirection: 'horizontal',
-          transitionSpec: {
-            open: config,
-            close: config,
-          },
         }}
       />
       <Stack.Screen
@@ -120,11 +99,6 @@ const Router = () => {
         component={ChooseDoctor}
         options={{
           headerShown: false,
-          gestureDirection: 'horizontal',
-          transitionSpec: {
-            open: config,
-            close: config,
-          },
         }}
       />
       <Stack.Screen
@@ -132,11 +106,6 @@ const Router = () => {
         component={Chatting}
         options={{
           headerShown: false,
-          gestureDirection: 'horizontal',
-          transitionSpec: {
-            open: config,
-            close: config,
-          },
         }}
       />
     </Stack.Navigator>

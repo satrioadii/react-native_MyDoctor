@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View, RefreshControl} from 'react-native';
 import {JSONCategoryDoctor} from '../../assets';
 import {
   DoctorCategory,
@@ -13,10 +13,24 @@ import {colors, fonts} from '../../utils';
 const DoctorPages = props => {
   const {navigation} = props;
 
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, [refreshing]);
+
   return (
     <View style={styles.page}>
       <View style={styles.content}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          overScrollMode="always"
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }>
           <Gap height={30} />
           <View style={styles.wrapperSection}>
             <HomeProfile />

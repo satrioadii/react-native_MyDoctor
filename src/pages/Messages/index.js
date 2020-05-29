@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ID_doctor1, ID_doctor2, ID_doctor3} from '../../assets';
 import {Gap, ListDoctor} from '../../components';
 import {colors, fonts} from '../../utils';
-import {ID_doctor1, ID_doctor2, ID_doctor3} from '../../assets';
 
 const MessagesPage = () => {
   const [doctors, setDoctors] = useState([
