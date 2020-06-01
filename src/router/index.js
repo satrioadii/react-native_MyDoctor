@@ -1,23 +1,22 @@
-import React from 'react';
-import {
-  createStackNavigator,
-  TransitionPresets,
-  CardStyleInterpolators,
-} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {
-  Splash,
-  GetStarted,
-  SignUp,
-  Login,
-  UploadPhoto,
-  Doctor,
-  Messages,
-  Hospitals,
-  ChooseDoctor,
-  Chatting,
-} from '../pages';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import React from 'react';
 import {BottomNavigator} from '../components';
+import {
+  Chatting,
+  ChooseDoctor,
+  Doctor,
+  DoctorProfile,
+  GetStarted,
+  Hospitals,
+  Login,
+  Messages,
+  SignUp,
+  Splash,
+  UpdateProfile,
+  UploadPhoto,
+  UserProfile,
+} from '../pages';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,7 +35,12 @@ const config = {
 
 const MainApp = () => {
   return (
-    <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
+    <Tab.Navigator
+      tabBar={props => <BottomNavigator {...props} />}
+      screenOptions={{
+        gestureDirection: 'Horizontal',
+        gestureEnabled: true,
+      }}>
       <Tab.Screen name="Doctor" component={Doctor} />
       <Tab.Screen name="Messages" component={Messages} />
       <Tab.Screen name="Hospitals" component={Hospitals} />
@@ -47,6 +51,7 @@ const MainApp = () => {
 const Router = () => {
   return (
     <Stack.Navigator
+      initialRouteName="MainApp"
       screenOptions={{
         gestureEnabled: true,
         gestureDirection: 'horizontal',
@@ -83,6 +88,27 @@ const Router = () => {
       <Stack.Screen
         name="UploadPhoto"
         component={UploadPhoto}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfile}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="UpdateProfile"
+        component={UpdateProfile}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DoctorProfile"
+        component={DoctorProfile}
         options={{
           headerShown: false,
         }}

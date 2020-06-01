@@ -1,6 +1,11 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View, RefreshControl} from 'react-native';
-import {JSONCategoryDoctor} from '../../assets';
+import {
+  JSONCategoryDoctor,
+  ID_doctor1,
+  ID_doctor3,
+  ID_doctor2,
+} from '../../assets';
 import {
   DoctorCategory,
   Gap,
@@ -33,7 +38,7 @@ const DoctorPages = props => {
           }>
           <Gap height={30} />
           <View style={styles.wrapperSection}>
-            <HomeProfile />
+            <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
           </View>
           <View style={styles.wrapperSection}>
             <Text style={styles.title}>
@@ -60,9 +65,24 @@ const DoctorPages = props => {
           </View>
           <View style={styles.wrapperSection}>
             <Text style={styles.subtitle}>Top Rated Doctors</Text>
-            <RatedDoctor />
-            <RatedDoctor />
-            <RatedDoctor />
+            <RatedDoctor
+              name="Alexa Rachel"
+              description="Pediatrician"
+              avatar={ID_doctor1}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
+            <RatedDoctor
+              name="Sunny Frank"
+              description="Dentist"
+              avatar={ID_doctor2}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
+            <RatedDoctor
+              name="Poe Minn"
+              description="Podiatrist"
+              avatar={ID_doctor3}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
           </View>
           <View style={styles.wrapperSection}>
             <Text style={styles.subtitle}>Good News</Text>

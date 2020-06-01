@@ -6,12 +6,21 @@ import {
 } from 'react-native-gesture-handler';
 import {colors, fonts} from '../../../utils';
 
-const ComponentButton = ({type, title, onPress, children}) => {
+import ButtonIconSend from './ButtonIcon';
+
+const ComponentButton = ({type, title, onPress, children, enabled}) => {
+  if (type === 'button-icon-send') {
+    return <ButtonIconSend enabled={enabled} />;
+  }
+
   if (type === 'icon-only') {
     return <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity>;
   }
   return (
-    <TouchableNativeFeedback style={styles.container(type)} onPress={onPress}>
+    <TouchableNativeFeedback
+      style={styles.container(type)}
+      onPress={onPress}
+      background={TouchableNativeFeedback.Ripple('#ffffff', false)}>
       <Text style={styles.text(type)}>{title}</Text>
     </TouchableNativeFeedback>
   );

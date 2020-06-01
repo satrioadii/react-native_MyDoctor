@@ -1,9 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Header, ListDoctor} from '../../components';
+import {StyleSheet, View} from 'react-native';
 import {ID_doctor1} from '../../assets';
+import {Header, List} from '../../components';
 import {colors} from '../../utils';
-import {NavigationContainer} from '@react-navigation/native';
 
 const ChooseDoctor = ({navigation}) => {
   return (
@@ -14,7 +13,7 @@ const ChooseDoctor = ({navigation}) => {
         type="dark"
         onPress={() => navigation.goBack()}
       />
-      <ListDoctor
+      <List
         profilePic={ID_doctor1}
         name="Alexander Jannie"
         description="wanita"

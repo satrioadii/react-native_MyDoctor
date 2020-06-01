@@ -1,18 +1,21 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {ID_doctor1, IL_RatingStar, IC_Star} from '../../../assets';
-import {fonts, colors} from '../../../utils';
-import {Gap} from '../../atoms';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import {TouchableNativeFeedback} from 'react-native-gesture-handler';
+import {IC_Star} from '../../../assets';
+import {colors, fonts} from '../../../utils';
 
-const RatedDoctor = () => {
+const RatedDoctor = ({avatar, name, description, onPress}) => {
   return (
-    <View style={styles.container}>
+    <TouchableNativeFeedback
+      style={styles.container}
+      background={TouchableNativeFeedback.Ripple('#FFFFFF', false)}
+      onPress={onPress}>
       <View style={styles.profile}>
-        <Image source={ID_doctor1} style={styles.avatar} />
+        <Image source={avatar} style={styles.avatar} />
       </View>
       <View style={styles.identity}>
-        <Text style={styles.name}>Alexa Rachel</Text>
-        <Text style={styles.profession}>Pediactrician</Text>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.profession}>{description}</Text>
       </View>
       <View style={styles.rating}>
         <IC_Star />
@@ -21,7 +24,7 @@ const RatedDoctor = () => {
         <IC_Star />
         <IC_Star />
       </View>
-    </View>
+    </TouchableNativeFeedback>
   );
 };
 

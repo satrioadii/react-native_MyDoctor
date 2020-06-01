@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {ID_doctor1, ID_doctor2, ID_doctor3} from '../../assets';
-import {Gap, ListDoctor} from '../../components';
+import {Gap, List} from '../../components';
 import {colors, fonts} from '../../utils';
 
 const MessagesPage = () => {
@@ -34,7 +34,7 @@ const MessagesPage = () => {
           <Text style={styles.title}>Messages</Text>
         </View>
         {doctors.map((doctor, index) => (
-          <ListDoctor
+          <List
             key={index}
             profilePic={doctor.profilePic}
             name={doctor.name}

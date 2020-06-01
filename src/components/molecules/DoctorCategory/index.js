@@ -7,7 +7,10 @@ const DoctorCatgory = props => {
   const {category, IconCategory, onPress} = props;
   return (
     <View style={styles.contentWrap}>
-      <TouchableNativeFeedback style={styles.container} onPress={onPress}>
+      <TouchableNativeFeedback
+        style={styles.container}
+        onPress={onPress}
+        background={TouchableNativeFeedback.Ripple('#ffffff', false)}>
         <IconCategory style={styles.illustration} />
         <Text style={styles.text}>Saya butuh</Text>
         <Text style={styles.textCategory}>{category}</Text>
